@@ -1,4 +1,6 @@
+>>> the test_list.txt file should have exactly one enter below the last value
 >>> make sure the RPLAN_small is in the heat\data
+>>> make sure you are in the heat folder
 
 >>> run the infer script as follows:
 python infer.py --checkpoint_path ./checkpoints/ckpts_heat_s3d_256/checkpoint.pth  --dataset RPLAN_small --image_size 256 --viz_base ./results/viz_heat_RPLAN_small_256 --save_base ./results/npy_heat_RPLAN_small_256
