@@ -105,15 +105,15 @@ def main(dataset, ckpt_path, image_size, viz_base, save_base, infer_times):
     print('Load from ckpts of epoch {}'.format(ckpt['epoch']))
     ckpt_args = ckpt['args']
     if dataset == 'outdoor':
-        data_path = './data/outdoor/cities_dataset'
-        det_path = './data/outdoor/det_final'
+        data_path = '..heat/data/outdoor/cities_dataset'
+        det_path = '..heat/data/outdoor/det_final'
         test_dataset = OutdoorBuildingDataset(data_path, det_path, phase='test', image_size=image_size, rand_aug=False,
                                               inference=True)
     elif dataset == 's3d_floorplan':
-        data_path = './data/s3d_floorplan'
+        data_path = '../heat/data/s3d_floorplan'
         test_dataset = S3DFloorplanDataset(data_path, phase='test', rand_aug=False, inference=True)
     elif dataset == 'RPLAN_small':
-        data_path = './data/RPLAN_small'
+        data_path = '../heat/data/RPLAN_small'
         test_dataset = S3DFloorplanDataset(data_path, phase='test', rand_aug=False, inference=True)
     else:
         raise ValueError('Unknown dataset type: {}'.format(dataset))
@@ -438,14 +438,14 @@ def convert_annot(annot):
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Holistic edge attention transformer', add_help=False)
-    parser.add_argument('--dataset', default='outdoor',
-                        help='the dataset for experiments, outdoor/s3d_floorplan')
-    parser.add_argument('--checkpoint_path', default='',
+    parser.add_argument('--dataset', default='../heat/outdoor',
+                        help='the dataset for experiments, ../heat/outdoor/s3d_floorplan')
+    parser.add_argument('--checkpoint_path', default='../heat/checkpoints',
                         help='path to the checkpoints of the model')
     parser.add_argument('--image_size', default=256, type=int)
-    parser.add_argument('--viz_base', default='./results/viz',
+    parser.add_argument('--viz_base', default='../heat/results/viz',
                         help='path to save the intermediate visualizations')
-    parser.add_argument('--save_base', default='./results/npy',
+    parser.add_argument('--save_base', default='../heat/results/npy',
                         help='path to save the prediction results in npy files')
     parser.add_argument('--infer_times', default=3, type=int)
     return parser
