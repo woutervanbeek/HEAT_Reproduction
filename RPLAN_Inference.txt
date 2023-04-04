@@ -4,3 +4,5 @@
 
 >>> run the infer script as follows:
 python infer.py --checkpoint_path ./checkpoints/ckpts_heat_s3d_256/checkpoint.pth  --dataset RPLAN_small --image_size 256 --viz_base ./results/viz_heat_RPLAN_small_256 --save_base ./results/npy_heat_RPLAN_small_256
+
+>>> visualize Results (predicted labels)
