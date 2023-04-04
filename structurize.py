@@ -15,7 +15,7 @@ import torch
 from rasterio import features
 from scipy.ndimage.morphology import binary_dilation, generate_binary_structure
 
-from utils import COLORS_ORDERED
+from utils_rplan import COLORS_ORDERED
 
 # settings
 FOLDER = "C:\\Users\\caspervanengel\\OneDrive\\Documents\\PHD\\1_data\\rplan\\0-full"

@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from utils import tens2img, normalize_image
+from utils_rplan import tens2img, normalize_image
 import cv2
 import networkx as nx
 from torch_geometric.utils import to_networkx, from_networkx

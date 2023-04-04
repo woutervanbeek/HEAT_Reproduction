@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 # own
 from rplan_process.structurize import extract_polygons_from_image, extract_full_graph_from_polygons
-from utils import COLORS_ORDERED, colorize_floorplan
+from utils_rplan import COLORS_ORDERED, colorize_floorplan
 from plot import plot_polygon
 
 # Class to encapsulate a floorplan [vectorize, extract graph, render it]
