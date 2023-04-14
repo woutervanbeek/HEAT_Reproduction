@@ -5,10 +5,8 @@
 >>> run the infer script as follows:
 python infer.py --checkpoint_path ../heat/checkpoints/ckpts_heat_s3d_256/checkpoint.pth  --dataset RPLAN_small --image_size 256 --viz_base ../heat/results/viz_heat_RPLAN_small_256 --save_base ../heat/results/npy_heat_RPLAN_small_256
 
+
+>>> go to the HEAT_Reproduction/s3d_floorplan_eval folder
 >>> visualize Results (predicted labels)
+python visualize_npy.py
 
-
-
-
->>> run the infer for new data
-python infer.py --checkpoint_path ../heat/checkpoints/ckpts_heat_s3d_256/checkpoint.pth  --dataset newdata --image_size 256 --viz_base ../heat/results/viz_heat_newdata_256 --save_base ../heat/results/npy_heat_newdata_256

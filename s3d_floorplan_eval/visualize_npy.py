@@ -11,8 +11,8 @@ from planar_graph_utils import get_regions_from_pg, plot_floorplan_with_regions
 #     (234, 240): [(234, 120), (20, 240)],
 # }
 
-pg_base = '../heat/results/npy_heat_RPLAN_small_256/'
-viz_base = '../heat/results//viz_heat_RPLAN_small'
+pg_base = '../../heat/results/npy_heat_RPLAN_small_256/'
+viz_base = '../../heat/results/visualize_heat_RPLAN_small'
 if not os.path.exists(viz_base):
     os.makedirs(viz_base)
 
