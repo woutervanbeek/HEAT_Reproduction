@@ -1,0 +1,66 @@
+### Install nvida cuda ###
+https://developer.nvidia.com/cuda-11-7-0-download-archive?target_os=Windows&target_arch=x86_64
+Installer: Network
+
+### install microsoft visual c++ ### maybe just use visual studio 14.00
+https://visualstudio.microsoft.com/visual-cpp-build-tools/
+Modify: select the 'Desktop development with C++'
+
+### conda prompt (as administrator): ###
+### Create env ##
+conda create -n heat
+conda activate heat
+
+cd *move to root folder
+
+### root folder should look like: ###
+### Name_folder
+###      |____ data
+###      |____ Deformable_DETR
+###      |____ heat
+
+### Create correct dependencies between nvidia cuda and pytorch ###
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+
+### Run python in the conda terminal to check if cuda is correctly installed ###
+python
+>>> import torch
+>>> print(torch.version.cuda)
+### Should retrun 11.7 ###
+>>> torch.cuda.is_available()
+### Should say true ###
+>>> quit()
+
+### git ###
+conda install -c anaconda git
+git clone https://github.com/woodfrog/heat.git
+git clone https://github.com/fundamentalvision/Deformable-DETR.git
+
+### Install requirements of detr ###
+pip install pycocotools # <-- this should run if microsoft visual c++ builder is correctly installed
+pip install tqdm
+pip install cython
+pip install scipy
+
+### Install the Deformable attention module ###
+pip install Deformable-DETR\models\ops
+
+### Install the requirements for HEAT ###
+pip install -r heat\requirements_uninstalled.txt
+
+### Install the HEAT module ###
+pip install heat\models\ops
+
+### now check the instalation of heat by opening python ###
+python
+>>> import heat
+### this should not return an error
+
+
+### OPTIONAL: install jupyter notebook ###
+conda install jupyter
+
+### install ipykernel (used for activating the env in jupyter notebook) ###
+conda install -c anaconda ipykernel
+python -m ipykernel install --user --name=heat
+

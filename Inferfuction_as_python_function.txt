@@ -1,9 +1,0 @@
-from infer import infer
-
-checkpoint_path = './checkpoints/ckpts_heat_s3d_256/checkpoint.pth'
-dataset = 's3d_floorplan'
-image_size = 256
-viz_base = './results/viz_heat_s3d_256'
-save_base = './results/npy_heat_s3d_256'
-
-infer(checkpoint_path, dataset, image_size, viz_base, save_base)
