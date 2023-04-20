@@ -6,6 +6,10 @@ This file gives an overview of how we acquired our results. This file contains t
 4. How preprocess new data from RPLAN.
 5. How to create the results from RPLAN.
 
+After these steps. There are two files left:
+Image_processing.ipynb <-- this produces the pictures from our blog
+Create_annot_files.ipynb <-- this contains some experiments into annotation files.
+
 ###################################
 #--- 1. Instalation guide HEAT ---#
 ###################################
@@ -19,8 +23,10 @@ To install heat walk though the steps in heat_install.txt
 |- HEAT_Reproduction (<-- This is our git folder)
 |- heat (<-- this is the heat folder only containing data, checkpoints, results and evaluation)
   |- checkpoints (<-- this is the checkpoint folder that can be downloaded from the origional heat git repo)
-  |- results (<-- just an empty folder)
-  |- s3d_floorplan_eval (<-- also just an empty folder) 
+  |- results
+       |- input_output  (<-- empty folder)
+       |- output_gt  (<-- empty folder)
+  |- s3d_floorplan_eval (<-- empty folder) 
   |- data
        |- s3d_floorplan (<-- this is the original floorplan data from heat, contains some txt files and folders)
 	 |    |- annot (<-- should be filled)
@@ -36,7 +42,7 @@ To install heat walk though the steps in heat_install.txt
 		|- max (<-- empty)
 		|- normals (<-- empty)
 		|- original (<-- empty)
-		|- original_casper (<-- fill with original RPLAN RGB images)
+		|- original_casper (<-- fill with original RPLAN png images)
 		|- *sample.npy (<-- copy this from our git repo)
 		|- *test_list (<-- copy this from our git repo)
 
@@ -55,6 +61,10 @@ python visualize_npy.py (<-- edit the file location in this function to go to th
 #--- 4. Preprocess RPLAN data          ---#
 ###########################################
 
+First, copy the geometry.pickle files to the heat\data\RPLAN_small\geometry_casper folder
+and copy the original png images to the heat\data\RPLAN_small\original_casper folder
+
+Second, run RPLAN_Preprocessing.ipnyb notebook. This takes all the valid combinations between geometry and original files, gives them the correct numbers, and then creates density, normal, max and annotaion. 
 
 ###########################################
 #--- 5. Create results for RPLAN data ---#
@@ -62,9 +72,12 @@ python visualize_npy.py (<-- edit the file location in this function to go to th
 Make sure you are in the HEAT_Reproduction folder
 Run the following code:
 
-python infer.py --checkpoint_path ../heat/checkpoints/ckpts_heat_s3d_256/checkpoint.pth  --dataset RPLAN_small --image_size 256 --viz_base ../heat/results/viz_heat_RPLAN_small_256 -save_base ../heat/results/npy_heat_RPLAN_small_256
+python infer.py --checkpoint_path ../heat/checkpoints/ckpts_heat_s3d_256/checkpoint.pth  --dataset RPLAN_small --image_size 256 --viz_base ../heat/results/viz_heat_RPLAN_small_256 --save_base ../heat/results/npy_heat_RPLAN_small_256
 
 cd s3d_floorplan_eval
 python visualize_npy.py
+
+Now run the Qualitive_evaluation.ipnyb notebook to produce the Qualitive evaluation results.
+
 
 
